@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Example</title>
+</head>
+
+<body>
+
+    <!-- use the variable in the <img> tag -->
+    <img id="myImage0" src="">
+    <img id="myImage1" src="">
+    <img id="myImage2" src="">
+    <img id="myImage3" src="">
+    <img id="myImage4" src="">
+    <img id="myImage5" src="">
+    <img id="myImage6" src="">
+    <img id="myImage7" src="">
+    <img id="myImage8" src="">
+    <img id="myImage9" src="">
+
+    <!-- set the image source using js -->
+    <script>
+        const data1 = [
+            {
+                DeviceName: 786458319,
+                Latitude: 25.66831,
+                Longitude: -80.41904
+            },
+            {
+                DeviceName: 786458319,
+                Latitude: 25.66827,
+                Longitude: -80.41911
+            },
+
+            {
+                DeviceName: 786458319,
+                Latitude: 25.59094,
+                Longitude: -80.36938
+            }
+        ]
+            //TASK: sout the three different perspectives, for each data1 index
+        function perspective1(dataIndex, numbersAsString){
+            //could also rebuild
+            numbersAsString = coordinate(data1[dataIndex].Latitude, data1[dataIndex].Longitude);
+            var head120Url = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=120&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+            return head120Url;
+        }
+        function coordinate(lat, long) { // gets the http with whatvever input given
+           // var imageURL = "";
+            var numbersAsString = `${lat},${long}`;
+            return numbersAsString
+        }
+
+        function getImgUrl(lat, long) { // gets the http with whatvever input given
+            var imageURL = "";
+           // var numbersAsString = `${lat},${long}`;
+            var numbersAsString = coordinate(lat, long);
+            imageURL = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=240&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+           
+            return imageURL;
+        }
+
+        function getSrc(i) {
+            var id = `myImage${i}`;
+            return document.getElementById(id).src = getImgUrl(data1[i].Latitude, data1[i].Longitude); // need three perspectives here
+
+        }
+        for (let i = 0; i < data1.length; i++) {
+            getSrc(i);
+        }
+
+    </script>
+    <script>
+        function downloadImages() {
+            const images = document.querySelectorAll('img'); // all with img 
+            images.forEach((img, index) => {
+                const url = img.src;
+                var lat = data1[index].Latitude
+                var long = data1[index].Longitude
+                var name = data1[index].DeviceName
+                var coordinate1 = coordinate(lat, long); // the numbers as strings 
+
+                const filename = `${name}__${coordinate1}__n-${index + 1}.jpg`; //change to lat long
+
+                fetch(url)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = filename;
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                    })
+                    .catch(error => console.error('Error downloading image:', error));
+            });
+        }
+
+        // call the function to download images when the page loads
+        window.onload = downloadImages;
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  float: left;
+  height: 100%;
+  width: 25%;
+}
+img {
+  float: left;
+  height: 75%;
+  width: 75%;
+}
+#pano {
+  float: left;
+  height: 100%;
+  width: 75%;
+}

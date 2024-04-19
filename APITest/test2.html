@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Example</title>
+</head>
+
+<body>
+    <!-- define image URL variable -->
+    <script>
+        const data1 = [
+            {
+                DeviceName: 786458319,
+                Latitude: 25.66831,
+                Longitude: -80.41904
+            },
+            {
+                DeviceName: 786458319,
+                Latitude: 25.66827,
+                Longitude: -80.41911
+            },
+
+            {
+                DeviceName: 786458319,
+                Latitude: 25.59094,
+                Longitude: -80.36938
+            }
+        ]
+//TASK: loop 
+       // function getImgUrl(latitude, longitude) {
+            var imageURL = "";
+            for (let i = 0; i < data1.length; i++) {
+                var lat = data1[i].Latitude // ok this format works with 0, change to i
+                var long = data1[i].Longitude
+                var numbersAsString = `${lat},${long}`;
+                imageURL = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=240&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+            }
+          //  return url;
+        //}
+
+    </script>
+
+    <!-- use the variable in the <img> tag -->
+    <img id="myImage" alt="My Image" src="">
+    <img id="myImage2" alt="My Image2" src="">
+    <img id="myImage3" alt="My Image3" src="">
+
+    <!-- set the image source using js -->
+    <script>
+        // get the image element by its ID
+        var imgElement = document.getElementById("myImage");
+        var imgElement2 = document.getElementById("myImage2");
+        var imgElement3 = document.getElementById("myImage3");
+
+
+        // set the src attribute to the value of your imageURL variable
+        imgElement.src = imageURL;
+        imgElement2.src = imageURL;
+        imgElement3.src = imageURL;
+    </script>
+</body>
+
+</html>

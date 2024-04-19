@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Example</title>
+</head>
+
+<body>
+    
+    <!-- use the variable in the <img> tag -->
+    <img id="myImage0" src="">
+    <img id="myImage1" src="">
+    <img id="myImage2" src="">
+
+    <!-- set the image source using js -->
+    <script>
+      const data1 = [
+            {
+                DeviceName: 786458319,
+                Latitude: 25.66831,
+                Longitude: -80.41904
+            },
+            {
+                DeviceName: 786458319,
+                Latitude: 25.66827,
+                Longitude: -80.41911
+            },
+
+            {
+                DeviceName: 786458319,
+                Latitude: 25.59094,
+                Longitude: -80.36938
+            }
+        ]
+        function getImgUrl(lat, long) { // gets the http with whatvever input given
+            var imageURL = "";
+            var numbersAsString = `${lat},${long}`;
+            imageURL = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=240&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+
+            return imageURL;
+        }
+
+        function getSrc(i){
+             var id = `myImage${i}`;
+             return document.getElementById(id).src = getImgUrl(data1[i].Latitude, data1[i].Longitude); 
+            
+        }
+         for(let i = 0; i < data1.length; i++){ 
+             getSrc(i); 
+         }
+    
+    </script>
+</body>
+
+</html>

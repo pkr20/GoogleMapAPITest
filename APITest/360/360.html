@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Street View split-map-panes</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg&libraries=places"></script>-->
+
+
+     <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="text/javascript" src="360script.js"></script>
+    <script type="text/javascript" src = "index.js"></script>
+
+  </head>
+  <body>
+
+    <div id="map"></div>
+    <div id="pano"></div>
+
+    <img id="img" src="https://maps.googleapis.com/maps/api/streetview?size=640x480&location=25.78915,-80.20374&fov=120&heading=0&radius=150&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg">
+    <img id ="img" src="https://maps.googleapis.com/maps/api/streetview?size=640x480&location=25.78915,-80.20374&fov=120&heading=120&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg">
+    <img id ="img" src="https://maps.googleapis.com/maps/api/streetview?size=640x480&location=25.78915,-80.20374&fov=120&heading=240&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg">
+
+    
+    
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg&callback=initialize&v=weekly"
+      defer
+    ></script>
+  <!-- size=640x480&location=25.78915,-80.20374&fov=120&heading=240 -->
+   
+
+  </body>
+  
+</html> 
+
+<!--
+
+  Code to automatically download images and convert them to a folder 
+
+  -when I run the latlngs into a for loop
+
+  -start by fixing the img links
+  this.myDate = new Date(); console.log(this.myDate)
+
+
+
+-->

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Example</title>
+</head>
+
+<body>
+
+    <!-- use the variable in the <img> tag -->
+    <img id="myImage0" src="">
+    <img id="myImage1" src="">
+    <img id="myImage2" src="">
+    <img id="myImage3" src="">
+    <img id="myImage4" src="">
+    <img id="myImage5" src="">
+    <img id="myImage6" src="">
+    <img id="myImage7" src="">
+    <img id="myImage8" src="">
+    <img id="myImage9" src="">
+
+    <!-- set the image source using js -->
+    <script>
+        const data1 = [
+            {
+                DeviceName: 7864583191,
+                Latitude: 25.66831,
+                Longitude: -80.41904
+            },
+            {
+                DeviceName: 7864583192,
+                Latitude: 25.66827,
+                Longitude: -80.41911
+            },
+
+            {
+                DeviceName: 7864583193,
+                Latitude: 25.59094,
+                Longitude: -80.36938
+            }
+        ]
+            //TASK: sout the three different perspectives, for each data1 index
+        function perspective1(dataIndex){ //the natural index
+          
+            var [first, second, third] = getSrc(dataIndex)
+            var numbersAsString = second
+            dataIndex = third * 3; 
+            
+          
+            //return document.getElementById(id).src = getImgUrl(data1[i].Latitude, data1[i].Longitude); // now change the heading
+          for(let i = 0; i < 3 ; i++){
+            var heading;
+            //var persp1;
+             //document.getElementById('myImage0').src = persp1;
+            var imageID = `myImage${dataIndex}`;
+             if(i === 0){
+                 heading = 0;
+                 var temp = dataIndex + 0;
+                 imageID = `myImage${temp}`;
+                var persp1 = document.getElementById(imageID).src = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=${heading}&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+             }else if(i === 1){
+                 heading = 120;
+                 var temp = dataIndex + 1
+                 imageID = `myImage${temp}`;
+               var persp2 = document.getElementById(imageID).src = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=${heading}&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+                
+            }else{
+                heading = 240;
+                var temp = dataIndex + 2
+                imageID = `myImage${temp}`;
+                var persp3 = document.getElementById(imageID).src = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=${heading}&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+            
+            }
+             
+           }
+            return [persp1, persp2, persp3];
+           
+
+        }
+        function coordinate(lat, long) { // gets the http with whatvever input given
+           // var imageURL = "";
+            var numbersAsString = `${lat},${long}`;
+            return numbersAsString
+        }
+
+        function getImgUrl(lat, long) { // gets the http with whatvever input given
+            var imageURL = "";
+           // var numbersAsString = `${lat},${long}`;
+            var numbersAsString = coordinate(lat, long);
+            imageURL = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=240&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+           
+            return imageURL;
+        }
+
+        function getSrc(i) {
+           
+            var nas2 = `${data1[i].Latitude}, ${data1[i].Longitude}`;
+            return [getImgUrl(data1[i].Latitude, data1[i].Longitude), nas2, i]; // need three perspectives here
+            //document.getElementById(id).src
+        }
+        for (let i = 0; i < data1.length; i++) {
+           
+            perspective1(i);
+   
+              
+        }
+
+    </script>
+    <script>
+        function downloadFunc(filename, url){
+             fetch(url)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = filename;
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                    })
+                    .catch(error => console.error('Error downloading image:', error)); 
+        }
+       
+            
+        function downloadImages() { //TASK: WHY IS THIS DOWNLOADING 28 IMAGES??? 
+
+            const images = document.querySelectorAll('img'); // all with img, rgabs all in an array
+                
+            images.forEach((img, index) => { //goes through all on the imgs
+                var i = Math.floor(index / 3);
+                var [first, second, third] = getSrc(i)
+        
+                //var numbersAsString = second
+
+                var filename = `n-${second}.jpg`
+                
+                const url = img.src;
+                
+                downloadFunc(filename, url)
+
+            });  
+        }
+
+        // call the function to download images when the page loads
+        window.onload = downloadImages;
+
+    </script>
+</body>
+
+</html>

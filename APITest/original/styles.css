@@ -1,0 +1,22 @@
+/* styles.css */
+
+body {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    margin: 20px;
+}
+
+header, main, footer {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+
+
+#photo-container img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    max-height: 300px;
+    margin-bottom: 10px;
+}
