@@ -43,7 +43,7 @@
         function perspective1(dataIndex, numbersAsString){
             //could also rebuild
             numbersAsString = coordinate(data1[dataIndex].Latitude, data1[dataIndex].Longitude);
-            var head120Url = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=120&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+            var head120Url = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=120&key=apikey`;
             return head120Url;
         }
         function coordinate(lat, long) { // gets the http with whatvever input given
@@ -56,7 +56,7 @@
             var imageURL = "";
            // var numbersAsString = `${lat},${long}`;
             var numbersAsString = coordinate(lat, long);
-            imageURL = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=240&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+            imageURL = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=240&key=apikey`;
            
             return imageURL;
         }
