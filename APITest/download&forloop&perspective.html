@@ -57,18 +57,18 @@
                  heading = 0;
                  var temp = dataIndex + 0;
                  imageID = `myImage${temp}`;
-                var persp1 = document.getElementById(imageID).src = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=${heading}&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+                var persp1 = document.getElementById(imageID).src = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=${heading}&key=apikey`;
              }else if(i === 1){
                  heading = 120;
                  var temp = dataIndex + 1
                  imageID = `myImage${temp}`;
-               var persp2 = document.getElementById(imageID).src = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=${heading}&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+               var persp2 = document.getElementById(imageID).src = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=${heading}&key=apikey`;
                 
             }else{
                 heading = 240;
                 var temp = dataIndex + 2
                 imageID = `myImage${temp}`;
-                var persp3 = document.getElementById(imageID).src = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=${heading}&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+                var persp3 = document.getElementById(imageID).src = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=${heading}&key=apikey`;
             
             }
              
@@ -87,7 +87,7 @@
             var imageURL = "";
            // var numbersAsString = `${lat},${long}`;
             var numbersAsString = coordinate(lat, long);
-            imageURL = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=240&key=AIzaSyA-Qna6ba0K_SRSDnufZ2QgrNktNNrUHTg`;
+            imageURL = `https://maps.googleapis.com/maps/api/streetview?size=640x480&location=${numbersAsString}&fov=120&heading=240&key=apikey`;
            
             return imageURL;
         }
